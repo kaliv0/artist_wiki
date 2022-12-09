@@ -63,6 +63,7 @@ class Artwork(models.Model):
     artist = models.ForeignKey(Artist, related_name='artworks',
                                on_delete=models.CASCADE)
     genre = models.ManyToManyField(Genre, related_name='artworks', blank=True)
+    style = models.ManyToManyField(Style, related_name='artworks', blank=True, default=2)
 
     def __str__(self):
         return self.title
