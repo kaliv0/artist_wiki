@@ -15,8 +15,8 @@ class ArtworkSerializer(serializers.ModelSerializer):
 
 class ArtistSerializer(serializers.ModelSerializer):
     influences = serializers.PrimaryKeyRelatedField(read_only=True, many=True)
-    # artworks = serializers.PrimaryKeyRelatedField(read_only=True, many=True)
-    artworks = ArtworkSerializer(many=True, read_only=True)
+    artworks = serializers.PrimaryKeyRelatedField(read_only=True, many=True)
+    # artworks = ArtworkSerializer(many=True, read_only=True)
 
     class Meta:
         model = Artist
@@ -36,7 +36,9 @@ class CountrySerializer(serializers.ModelSerializer):
 
 class StyleSerializer(serializers.ModelSerializer):
     # artists = ArtistSerializer(many=True, read_only=True)
+    # artworks = ArtworkSerializer(many=True, read_only=True)
     artists = serializers.PrimaryKeyRelatedField(read_only=True, many=True)
+    artworks = serializers.PrimaryKeyRelatedField(read_only=True, many=True)
 
     class Meta:
         model = Style
