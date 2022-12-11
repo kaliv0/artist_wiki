@@ -13,7 +13,7 @@ class Country(models.Model):
 
 
 class Style(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=30)
     time_period = models.CharField(max_length=30, null=True, blank=True)
     description = models.CharField(max_length=120, null=True, blank=True)
 
@@ -37,8 +37,8 @@ class Genre(models.Model):
 
 class Artist(models.Model):
     name = models.CharField(max_length=60)
-    year_of_birth = models.CharField(max_length=6, null=True, blank=True)
-    year_of_death = models.CharField(max_length=6, null=True, blank=True)
+    year_of_birth = models.CharField(max_length=8, null=True, blank=True)
+    year_of_death = models.CharField(max_length=8, null=True, blank=True)
     nationality = models.ForeignKey(Country,
                                     related_name="national_artists",
                                     on_delete=models.CASCADE)
@@ -47,7 +47,6 @@ class Artist(models.Model):
                                            on_delete=models.CASCADE)
     style = models.ManyToManyField(Style, related_name='artists', blank=True)
     field = models.ManyToManyField(Field, related_name='artists', blank=True)
-    # works = models.ManyToManyField(Artwork, related_name='artists', blank=True)
     influenced_by = models.ManyToManyField('self', symmetrical=False,
                                            related_name='influences', blank=True)
 
@@ -57,7 +56,7 @@ class Artist(models.Model):
 
 class Artwork(models.Model):
     title = models.CharField(max_length=100)
-    year = models.CharField(max_length=6, null=True, blank=True)
+    year = models.CharField(max_length=8, null=True, blank=True)
     url = models.CharField(max_length=200, null=True, blank=True)
     location = models.CharField(max_length=80, null=True, blank=True)
     artist = models.ForeignKey(Artist, related_name='artworks',
