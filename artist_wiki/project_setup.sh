@@ -8,12 +8,11 @@ echo "Installing dependencies"
 pip3 install -r requirements.txt
 
 echo "Creating migrations"
-#python3 manage.py makemirations
 python3 manage.py migrate
 
 echo "Seeding database"
-fixture=$(ls seed/)
-python3 manage.py loaddata seed/"$fixture"
+fixture="seed/db.json"
+python3 manage.py loaddata "$fixture"
 
 echo "Setting up admin"
 python3 manage.py shell <<<"from django.contrib.auth.models import User
