@@ -3,9 +3,10 @@
 echo "Migrating to database"
 python3 manage.py migrate
 
-echo "Seeding database"
-fixture="seed/db.json"
-python3 manage.py loaddata "$fixture"
+fixtures=$(ls seed/)
+while IFS= read -r fixture; do
+  python3 manage.py loaddata seed/"$fixture"
+done <<<"$fixtures"
 
 echo "Setting up admin"
 python3 manage.py shell <<<"from django.contrib.auth.models import User
