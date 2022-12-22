@@ -1,8 +1,10 @@
 from rest_framework import viewsets
 
-from artists.api.serializers import ArtistSerializer, CountrySerializer, StyleSerializer, FieldSerializer, \
-    GenreSerializer, ArtworkSerializer
-from artists.models import Artist, Country, Style, Field, Genre, Artwork
+from artists.api.serializers import (ArtistSerializer, CountrySerializer,
+                                     StyleSerializer, FieldSerializer,
+                                     GenreSerializer, ArtworkSerializer)
+from artists.models import (Artist, Country, Style,
+                            Field, Genre, Artwork)
 
 
 class CountryViewSet(viewsets.ModelViewSet):
