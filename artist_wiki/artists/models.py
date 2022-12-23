@@ -7,7 +7,6 @@ class Country(models.Model):
     def __str__(self):
         return self.name
 
-    # needed for correct presentation of name in admin panel
     class Meta:
         verbose_name_plural = "Countries"
 
@@ -42,7 +41,7 @@ class Artist(models.Model):
     nationality = models.ForeignKey(Country,
                                     related_name="national_artists",
                                     on_delete=models.CASCADE)
-    state_of_residence = models.ForeignKey(Country,
+    state_of_residence = models.ForeignKey(Country, null=True, blank=True,
                                            related_name="resident_artists",
                                            on_delete=models.CASCADE)
     style = models.ManyToManyField(Style, related_name='artists', blank=True)
@@ -59,7 +58,8 @@ class Artwork(models.Model):
     year = models.CharField(max_length=8, null=True, blank=True)
     url = models.CharField(max_length=200, null=True, blank=True)
     location = models.CharField(max_length=80, null=True, blank=True)
-    artist = models.ForeignKey(Artist, related_name='artworks',
+    artist = models.ForeignKey(Artist, null=True, blank=True,
+                               related_name='artworks',
                                on_delete=models.CASCADE)
     genre = models.ManyToManyField(Genre, related_name='artworks', blank=True)
     style = models.ManyToManyField(Style, related_name='artworks', blank=True)
