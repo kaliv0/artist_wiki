@@ -38,7 +38,7 @@ class ArtworkListCreate(generics.ListCreateAPIView):
         filters.OrderingFilter
     ]
     filterset_fields = ['year', 'genre__name', 'artist__name', ]
-    search_fields = ['title', 'location', ]
+    search_fields = ['title', ]
     ordering_fields = ['title', 'artist', 'year', ]
 
 
