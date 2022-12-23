@@ -1,9 +1,9 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, generics, filters
 
-from artists.api.serializers import (ArtistSerializer, CountrySerializer,
-                                     StyleSerializer, FieldSerializer,
-                                     GenreSerializer, ArtworkSerializer)
+from artists.api.serializers import (CountrySerializer, StyleSerializer,
+                                     FieldSerializer, GenreSerializer,
+                                     ArtistSerializer, ArtworkSerializer)
 from artists.models import (Artist, Country, Style,
                             Field, Genre, Artwork)
 
@@ -37,7 +37,7 @@ class ArtworkListCreate(generics.ListCreateAPIView):
         filters.SearchFilter,
         filters.OrderingFilter
     ]
-    filterset_fields = ['year', 'genre', 'artist', ]
+    filterset_fields = ['year', 'genre__name', 'artist__name', ]
     search_fields = ['title', 'location', ]
     ordering_fields = ['title', 'artist', 'year', ]
 
@@ -54,9 +54,9 @@ class ArtistListCreate(generics.ListCreateAPIView):
     filterset_fields = [
         'year_of_birth',
         'year_of_death',
-        'style',
-        'nationality',
-        'state_of_residence'
+        'style__name',
+        'nationality__name',
+        'state_of_residence__name'
     ]
     ordering_fields = ['name', 'year_of_birth']
 

@@ -38,7 +38,7 @@ class Artist(models.Model):
     name = models.CharField(max_length=60)
     year_of_birth = models.CharField(max_length=8, null=True, blank=True)
     year_of_death = models.CharField(max_length=8, null=True, blank=True)
-    nationality = models.ForeignKey(Country,
+    nationality = models.ForeignKey(Country, null=True, blank=True,
                                     related_name="national_artists",
                                     on_delete=models.CASCADE)
     state_of_residence = models.ForeignKey(Country, null=True, blank=True,
