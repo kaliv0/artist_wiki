@@ -16,5 +16,5 @@ urlpatterns = [
     path('artists/', ArtistListCreate.as_view(), name='artist-list'),
     path('artists/<int:pk>', ArtistDetail.as_view(), name='artist-detail'),
     path('artworks/', ArtworkListCreate.as_view(), name='artwork-list'),
-    path('artwork/<int:pk>', ArtworkDetail.as_view(), name='artwork-detail'),
+    path('artworks/<int:pk>', ArtworkDetail.as_view(), name='artwork-detail'),
 ]

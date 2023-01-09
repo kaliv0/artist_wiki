@@ -43,8 +43,8 @@ class ArtworkListCreate(generics.ListCreateAPIView):
 
 
 class ArtworkDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Artist.objects.all()
-    serializer_class = ArtistSerializer
+    queryset = Artwork.objects.all()
+    serializer_class = ArtworkSerializer
 
 
 class ArtistListCreate(generics.ListCreateAPIView):

@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'artist_wiki',
-        'USER': 'root',
-        'PASSWORD': 'pass123',
+        'USER': 'kaliv0',
+        'PASSWORD': '123pass',
         'HOST': 'localhost',
         'PORT': '3306',
     }
